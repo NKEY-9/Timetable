@@ -2,6 +2,50 @@
 let courses = [];
 let currentInterval = 60; // 기본값: 60분(1시간)
 
+// localStorage 키 정의
+const STORAGE_KEY = 'university_timetable_courses';
+const INTERVAL_KEY = 'university_timetable_interval';
+
+// localStorage에서 데이터 로드
+function loadCoursesFromStorage() {
+    const savedCourses = localStorage.getItem(STORAGE_KEY);
+    if (savedCourses) {
+        courses = JSON.parse(savedCourses);
+    }
+}
+
+// localStorage에서 시간 간격 로드
+function loadIntervalFromStorage() {
+    const savedInterval = localStorage.getItem(INTERVAL_KEY);
+    if (savedInterval) {
+        currentInterval = parseInt(savedInterval);
+        document.getElementById('interval').value = savedInterval;
+    }
+}
+
+// 데이터를 localStorage에 저장
+function saveCourcesToStorage() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(courses));
+}
+
+// 시간 간격을 localStorage에 저장
+function saveIntervalToStorage() {
+    localStorage.setItem(INTERVAL_KEY, currentInterval);
+}
+
+// 모든 데이터 초기화 함수
+function clearAllData() {
+    if (confirm('모든 저장된 강의 데이터가 삭제됩니다. 계속하시겠습니까?')) {
+        courses = [];
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(INTERVAL_KEY);
+        currentInterval = 60;
+        document.getElementById('interval').value = '60';
+        updateTimetable();
+        alert('데이터가 초기화되었습니다.');
+    }
+}
+
 // 시간 포맷팅 함수
 function formatTime(minutes) {
     const hours = Math.floor(minutes / 60);
@@ -59,6 +103,9 @@ function addCourse() {
     document.getElementById('endTime').value = '';
     document.getElementById('isMajor').checked = false;
 
+    // localStorage에 저장
+    saveCourcesToStorage();
+
     // 시간표 업데이트
     updateTimetable();
 }
@@ -66,6 +113,8 @@ function addCourse() {
 // 강의 삭제 함수
 function deleteCourse(id) {
     courses = courses.filter(course => course.id !== id);
+    // localStorage에 저장
+    saveCourcesToStorage();
     updateTimetable();
 }
 
@@ -73,6 +122,9 @@ function deleteCourse(id) {
 function updateTimetable() {
     const intervalSelect = document.getElementById('interval');
     currentInterval = parseInt(intervalSelect.value);
+
+    // localStorage에 시간 간격 저장
+    saveIntervalToStorage();
 
     renderTimetable();
     renderCourseList();
@@ -156,5 +208,8 @@ function renderCourseList() {
 
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', function() {
+    // localStorage에서 저장된 데이터 로드
+    loadCoursesFromStorage();
+    loadIntervalFromStorage();
     updateTimetable();
 });

@@ -79,6 +79,16 @@ h2 {
     transform: scale(1.05);
 }
 
+.settings .clear-btn {
+    background-color: #d32f2f;
+    color: #fff;
+    border: 2px solid #d32f2f;
+}
+
+.settings .clear-btn:hover {
+    background-color: #b71c1c;
+}
+
 /* 폼 섹션 */
 .form-section {
     background-color: #f9f9f9;
