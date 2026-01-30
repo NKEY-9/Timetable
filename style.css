@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 50%, #dbeafe 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #9d5c8f;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* 시간표 스타일 */
+.schedule-area {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(157, 92, 143, 0.1);
+    overflow-x: auto;
+}
+
+.timetable {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.timetable th {
+    background: linear-gradient(180deg, #f9d5e5 0%, #f5d7ea 100%);
+    color: #9d5c8f;
+    padding: 12px 8px;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 3px solid #e9b3d3;
+}
+
+.timetable td {
+    border: 1px solid #f0d9e8;
+    padding: 8px;
+    text-align: center;
+    font-size: 0.9em;
+    height: 50px;
+    background: white;
+}
+
+.timetable td:first-child {
+    background: #fef5fb;
+    font-weight: 600;
+    color: #9d5c8f;
+    min-width: 60px;
+}
+
+.time-slot {
+    background: linear-gradient(135deg, #fcd5f1 0%, #f8d7fa 100%);
+    border-radius: 10px;
+    padding: 6px;
+    margin: 2px;
+    font-size: 0.85em;
+    color: #8b4a7a;
+    font-weight: 500;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+/* 입력 폼 스타일 */
+.form-area {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(179, 157, 219, 0.1);
+    height: fit-content;
+}
+
+.form-area h2 {
+    color: #9d5c8f;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.form-area h3 {
+    color: #b39ddb;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #9d5c8f;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #f5d7ea;
+    border-radius: 12px;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    background: white;
+    color: #333;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #e9b3d3;
+    box-shadow: 0 0 0 3px rgba(233, 179, 211, 0.1);
+    background: #fffbfe;
+}
+
+.form-group input::placeholder {
+    color: #d4a5c7;
+}
+
+.btn-add {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #f9d5e5 0%, #f5d7ea 100%);
+    color: #9d5c8f;
+    border: 2px solid #e9b3d3;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+    background: linear-gradient(135deg, #f5d7ea 0%, #ead5e8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(157, 92, 143, 0.2);
+}
+
+.btn-add:active {
+    transform: translateY(0);
+}
+
+/* 강의 목록 스타일 */
+.course-list {
+    margin-top: 20px;
+}
+
+.courses-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.course-item {
+    background: linear-gradient(135deg, #fef5fb 0%, #faf8fc 100%);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border-left: 4px solid #e9b3d3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-item-info {
+    flex: 1;
+}
+
+.course-item-name {
+    color: #9d5c8f;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.course-item-detail {
+    font-size: 0.85em;
+    color: #b39ddb;
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #ffd7eb 0%, #ffc9e1 100%);
+    color: #d9558a;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, #ffc9e1 0%, #ffb3d9 100%);
+    transform: scale(1.05);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .schedule-area,
+    .form-area {
+        padding: 15px;
+    }
+
+    .timetable th,
+    .timetable td {
+        padding: 8px 4px;
+        font-size: 0.85em;
+    }
+
+    h1 {
+        font-size: 1.7em;
+    }
+
+    .form-area h2 {
+        font-size: 1.2em;
+    }
+
+    .time-slot {
+        font-size: 0.75em;
+    }
+}
+
+/* 스크롤바 스타일 */
+.courses-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.courses-container::-webkit-scrollbar-track {
+    background: #f5d7ea;
+    border-radius: 10px;
+}
+
+.courses-container::-webkit-scrollbar-thumb {
+    background: #e9b3d3;
+    border-radius: 10px;
+}
+
+.courses-container::-webkit-scrollbar-thumb:hover {
+    background: #df8ec8;
+}
